@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm  http://java.sun.com/xml/ns/persistence/orm_2_0.xsd"
+                 version="2.0">
+    <description>Extracted queries for repositories</description>
+    <named-native-query name="SampleEntity.ormFindAll"
+                        result-class="com.wemboo.boilerplate.db.SampleEntity">
+        <query><![CDATA[
+            SELECT record_id, name FROM sample_table
+            ]]></query>
+    </named-native-query>
+    <!-- Bind variables usage sampe -->
+    <named-native-query name="SampleEntity.findByType"
+                        result-class="com.wemboo.boilerplate.db.SampleEntity">
+        <query><![CDATA[
+            SELECT record_id, name FROM sample_table WHERE record_id=:type
+            ]]></query>
+    </named-native-query>
+</entity-mappings>

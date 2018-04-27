@@ -3,10 +3,18 @@
     xmlns:f="http://java.sun.com/jsf/core"
     xmlns:p="http://primefaces.org/ui">
  
-     <h:head title="Hello world!">
+     <h:head>
      </h:head>
  
      <h:body>
-         <p:spinner rendered="true"/>
+        <p:dataTable var="result" value="#{sampleStateBean.result}">
+            <p:column headerText="Id">
+                <h:outputText value="#{result.recordId}" />
+            </p:column>
+         
+            <p:column headerText="Name">
+                <h:outputText value="#{result.name}" />
+            </p:column>         
+        </p:dataTable>
      </h:body>
 </html>

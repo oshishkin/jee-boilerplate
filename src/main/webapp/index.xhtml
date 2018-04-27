@@ -4,9 +4,15 @@
     xmlns:p="http://primefaces.org/ui">
  
      <h:head>
-     </h:head>
+    </h:head>
  
      <h:body>
+         
+        <p:growl id="messages" showDetail="false"/>
+
+        <p:button outcome="create" value="Create new sample row" icon="ui-icon-star">
+        </p:button>
+             
         <p:dataTable var="result" value="#{sampleStateBean.result}">
             <p:column headerText="Id">
                 <h:outputText value="#{result.recordId}" />

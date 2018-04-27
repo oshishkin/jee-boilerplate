@@ -1,6 +1,5 @@
 /**
  * This is a typical Repository
- * Created by osh on 25/10/17.
  */
 package com.wemboo.boilerplate.db;
 

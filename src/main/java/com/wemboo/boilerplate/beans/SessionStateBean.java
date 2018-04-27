@@ -9,12 +9,14 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
 import javax.inject.Inject;
+import javax.inject.Named;
+
 import com.wemboo.boilerplate.db.SampleEntity;
 import com.wemboo.boilerplate.db.SampleRepository;
 import org.slf4j.Logger;
 
 @SessionScoped
-@ManagedBean(name="sampleStateBean")
+@Named("sampleStateBean")
 public class SessionStateBean implements Serializable{
 
     public static final String GREETING_TEXT = "Hello World!";
@@ -32,7 +34,6 @@ public class SessionStateBean implements Serializable{
     public void init() {
         log.debug("Initialize bean");
         greeting = GREETING_TEXT;
-        result = SampleRepository.findAll();      
     }
 
     public String getGreeting() {
@@ -40,6 +41,10 @@ public class SessionStateBean implements Serializable{
     }
 
     public List<SampleEntity> getResult() {
+        // TODO
+        // Use SessionStateBean as ManagedProperty in RequestScopeBean
+        // and update result from RequestStateBean's actionListener method
+        result = SampleRepository.findAll();      
         return result;
     }
 

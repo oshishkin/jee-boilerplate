@@ -52,7 +52,6 @@ public class RestController {
     }
 
 
-
     /**
      * Uses {@linkplain SampleRepository} to produce JSON
      */

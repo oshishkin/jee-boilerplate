@@ -5,11 +5,12 @@
 
 package com.wemboo.boilerplate.api;
 
-import com.wemboo.boilerplate.*;
+import com.wemboo.boilerplate.beans.SessionStateBean;
 import com.wemboo.boilerplate.db.*;
 
 import java.security.Principal;
 import java.util.List;
+
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.ws.rs.Consumes;
@@ -26,28 +27,26 @@ import org.slf4j.Logger;
 @Path("/")
 public class RestController {
 
-
     @Inject
     private Logger log;
     
-    @Inject 
-    private App app;
+    @Inject
+    private SessionStateBean bean;
 
     @Inject
     private SampleRepository sampleRepository;
 
-
     /**
      * Produces JSON
      */
-    @Path("/api")
+    @Path("/")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String getVehicleInfo(@QueryParam("greeting") String greeting) {
 
         log.info("We have received greeting string: "+greeting);
         if (greeting != null && greeting.equals("Hi!"))
-            return app.getGreeting();
+            return bean.getGreeting();
         else    
             return ".";
     }
@@ -57,7 +56,7 @@ public class RestController {
     /**
      * Uses {@linkplain SampleRepository} to produce JSON
      */
-    @Path("/api/get")
+    @Path("/get")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<SampleEntity> getSampleEntity() {
@@ -77,7 +76,7 @@ public class RestController {
      * {@linkplain Transactional} is required for persisting the object
      * @param context - is used to get {@linkplain Principal}
      */
-    @Path("/api/postupdate")
+    @Path("/postupdate")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -102,7 +101,7 @@ public class RestController {
      * @param context - is used to get {@linkplain Principal}
      * @return 
      */
-    @Path("/api/getupdate")
+    @Path("/getupdate")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Transactional

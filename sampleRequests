@@ -1,0 +1,11 @@
+http://localhost:8080/jee-boilerplate/api/get
+
+
+POST http://localhost:8080/jee-boilerplate/api/postupdate HTTP/1.1
+content-type: application/json
+
+{
+    "name": "sample"
+}
+
+

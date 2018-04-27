@@ -3,11 +3,11 @@
  */
 import org.junit.Test;
 import static org.junit.Assert.*;
-import com.wemboo.boilerplate.*;
+import com.wemboo.boilerplate.beans.SessionStateBean;
 
 public class SampleTest {
     @Test public void testAppHasAGreeting() {
-        App classUnderTest = new App();
+        SessionStateBean classUnderTest = new SessionStateBean();
         assertNotNull("app should have a greeting", classUnderTest.getGreeting());
     }
 }

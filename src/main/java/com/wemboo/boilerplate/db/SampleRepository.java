@@ -6,20 +6,17 @@ package com.wemboo.boilerplate.db;
 
 import java.util.List;
 
-import javax.enterprise.context.ApplicationScoped;
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.inject.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import org.slf4j.Logger;
 
 
-/**
- * The singleton annotation is required for {@link PersistenceContext} after {@link javax.inject.Inject}
- * empty bean.xml in META-INF is required to provide CDI
- */
-@Singleton
+@Stateless   //Stateless session bean annotation
+@LocalBean   //No-interface view annotation
 public class SampleRepository {
 
     private final static int CONST_TYPE_ID = 1;

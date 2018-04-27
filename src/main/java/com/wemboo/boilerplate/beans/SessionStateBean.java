@@ -1,5 +1,5 @@
 /**
- *  Demonstrates typical Session scope bean usage
+ *  Demonstrates typical Managed session scoped bean usage
  */
 package com.wemboo.boilerplate.beans;
 
@@ -7,10 +7,8 @@ import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.bean.ManagedBean;
 import javax.inject.Inject;
 import javax.inject.Named;
-
 import com.wemboo.boilerplate.db.SampleEntity;
 import com.wemboo.boilerplate.db.SampleRepository;
 import org.slf4j.Logger;
@@ -28,11 +26,11 @@ public class SessionStateBean implements Serializable{
     private SampleRepository SampleRepository;
 
     @Inject
-    private Logger log;    
+    private transient Logger log;    
 
     @PostConstruct
     public void init() {
-        log.debug("Initialize bean");
+        log.debug("Initialize session scoped bean");
         greeting = GREETING_TEXT;
     }
 
@@ -41,9 +39,7 @@ public class SessionStateBean implements Serializable{
     }
 
     public List<SampleEntity> getResult() {
-        // TODO
-        // Use SessionStateBean as ManagedProperty in RequestScopeBean
-        // and update result from RequestStateBean's actionListener method
+        log.debug("Get data");
         result = SampleRepository.findAll();      
         return result;
     }

@@ -1,17 +1,15 @@
 /**
- *  Demonstrates typical Request scope bean usage
+ *  Demonstrates typical Backing Request scoped bean usage
  */
 package com.wemboo.boilerplate.beans;
 
 import java.io.Serializable;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
-
 import com.wemboo.boilerplate.db.SampleEntity;
 import com.wemboo.boilerplate.db.SampleRepository;
 import org.slf4j.Logger;
@@ -26,14 +24,14 @@ public class RequestStateBean implements Serializable{
     private SampleRepository SampleRepository;
 
     @Inject
-    private Logger log;    
+    private transient Logger log;    
 
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
-        log.debug("Setter invoked with name: "+this.name);
+        log.debug("Setter invoked with name: "+name);
         this.name = name;
     }
 
@@ -42,8 +40,10 @@ public class RequestStateBean implements Serializable{
         log.debug("Action listener invoked with name: "+this.name);
 
         SampleEntity sampleEntity = new SampleEntity();
+        
         sampleEntity.setName(name);
         SampleRepository.save(sampleEntity);
+
         addMessage("Added name: "+this.name);
     }
      

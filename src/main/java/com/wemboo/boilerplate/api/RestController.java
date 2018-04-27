@@ -28,7 +28,7 @@ import org.slf4j.Logger;
 public class RestController {
 
     @Inject
-    private Logger log;
+    private transient Logger log;
     
     @Inject
     private SessionStateBean bean;

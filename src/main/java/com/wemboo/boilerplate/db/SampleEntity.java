@@ -1,4 +1,5 @@
 /**
+ * Typical entity
  * @author osh
  */
 package com.wemboo.boilerplate.db;

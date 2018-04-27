@@ -1,5 +1,5 @@
 /**
- * This is a typical Repository
+ * This is a typical DAO
  */
 package com.wemboo.boilerplate.db;
 
@@ -21,7 +21,7 @@ public class SampleRepository {
     private final static int CONST_TYPE_ID = 1;
 
     @Inject
-    private Logger log;
+    private transient Logger log;    
 
     @PersistenceContext
     private EntityManager em;

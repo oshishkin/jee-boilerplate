@@ -22,5 +22,8 @@
                 <h:outputText value="#{result.name}" />
             </p:column>         
         </p:dataTable>
+
+           <object type="application/pdf" data="./sampleservlet" height="300px" width="100%"/>
+           <p:media value="#{sampleStateBean.media}" width="100%" height="300px" player="pdf"/>
      </h:body>
 </html>

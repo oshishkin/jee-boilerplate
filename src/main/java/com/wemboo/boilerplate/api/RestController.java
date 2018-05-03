@@ -4,13 +4,10 @@
  */
 
 package com.wemboo.boilerplate.api;
-
 import com.wemboo.boilerplate.beans.SessionStateBean;
 import com.wemboo.boilerplate.db.*;
-
 import java.security.Principal;
 import java.util.List;
-
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.ws.rs.Consumes;

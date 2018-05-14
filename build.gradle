@@ -14,7 +14,12 @@ plugins {
     id 'eclipse'
     id 'maven'
     id 'com.bmuschko.cargo' version '2.3'
-//    id 'net.ltgt.apt' version '0.10'    
+    id 'io.franzbecker.gradle-lombok' version '1.14'
+}
+
+lombok {
+    version = '1.16.20'
+    sha256 = ''
 }
 
 war {
@@ -52,10 +57,9 @@ dependencies {
     // iText
     compile 'com.itextpdf:itextpdf:5.0.6'
 
-    //Lombok
-	//compileOnly 'org.projectlombok:lombok:1.16.20'
-	//apt "org.projectlombok:lombok:1.16.20"
-    
+    //Shiro auth
+    compile 'org.apache.shiro:shiro-all:1.2.3'
+
     }
 
 // In this section you declare where to find the dependencies of your project

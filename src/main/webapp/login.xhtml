@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:body>
+
+
+				<div>
+					<div>
+						Please enter your credentials
+					</div>
+				</div>
+				<div>
+					<h:form id="loginForm">
+						<div>
+							<p:outputLabel for="username" value="Login:"/>
+							<p:inputText value="#{sampleStateBean.username}" name="username" id="username" placeholder="Login" />
+						</div>
+						<div >
+							<p:outputLabel for="passwd" value="Password:"/>
+							<p:password value="#{sampleStateBean.password}" name="passwd" id="passwd" placeholder="Password" />
+						</div>
+						<div>
+							<p:commandButton action="#{sampleRequestBean.doLogin}" value="Log in"/>
+						</div>
+					</h:form>
+				</div>
+			
+
+</h:body>
+
+</html>

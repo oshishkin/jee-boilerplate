@@ -19,6 +19,7 @@ import org.slf4j.Logger;
 @WebServlet("sampleservlet")
 public class SampleServlet extends HttpServlet {
 
+
     @Inject
     private Logger log;
 

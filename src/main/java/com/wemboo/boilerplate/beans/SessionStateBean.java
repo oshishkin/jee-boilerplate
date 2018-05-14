@@ -20,16 +20,27 @@ import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 import org.slf4j.Logger;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @SessionScoped
 @Named("sampleStateBean")
 public class SessionStateBean implements Serializable{
 
     public static final String GREETING_TEXT = "Hello World!";
+
+    @Getter
+    @Setter
+    private String username;
+
+    @Getter
+    @Setter
+    private String password;
+
+    @Getter
     private String greeting;
 
-
-    private List<SampleEntity> result;
-
+    @Getter
     private StreamedContent media;
 
     @Inject
@@ -41,6 +52,8 @@ public class SessionStateBean implements Serializable{
     @Inject
     private transient Logger log;    
 
+    private List<SampleEntity> result;
+
     @PostConstruct
     public void init() throws DocumentException, IOException {
         log.debug("Initialize session scoped managed bean");
@@ -48,10 +61,9 @@ public class SessionStateBean implements Serializable{
 
         byte[] document = pdfGenerator.generate(false);
         media = new DefaultStreamedContent(new ByteArrayInputStream(document), "application/pdf");  
-    }
 
-    public String getGreeting() {
-        return greeting;
+        username = "";
+        password = "";
     }
 
     public List<SampleEntity> getResult() {
@@ -59,9 +71,4 @@ public class SessionStateBean implements Serializable{
         result = SampleRepository.findAll();      
         return result;
     }
-
-    public StreamedContent getMedia() {
-            return media;
-    }
-
 }

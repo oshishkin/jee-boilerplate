@@ -15,7 +15,11 @@ import javax.inject.Named;
 import com.wemboo.boilerplate.db.SampleEntity;
 import com.wemboo.boilerplate.db.SampleRepository;
 
+import org.apache.shiro.SecurityUtils;
 import org.slf4j.Logger;
+
+import lombok.Getter;
+import lombok.Setter;
 
 @RequestScoped
 @Named("sampleRequestBean")
@@ -28,6 +32,8 @@ public class RequestStateBean implements Serializable{
     @Inject
     private transient Logger log;    
 
+    @Getter
+    @Setter
     private String name;
 
     public void buttonAction(ActionEvent actionEvent) {
@@ -47,13 +53,19 @@ public class RequestStateBean implements Serializable{
     }
     
 
-    public void setName(String name)
-    {
-        this.name = name;
-    }
+    public String doLogin() {
 
-    public String getName() {
-        return this.name;
+        log.debug("Subject: "+SecurityUtils.getSubject().getPrincipal());
+        if (SecurityUtils.getSubject().getPrincipal() == null)
+        {
+            log.debug("Auth failed, return to login");            
+            return "login";
+        }
+        else
+        {
+            log.debug("Auth succeded, go to index");            
+            return "index";
+        }
     }
 
 }
